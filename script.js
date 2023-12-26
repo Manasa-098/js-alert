@@ -1,46 +1,28 @@
-let array = []
 
-function executeTask() {
+
+function register() {
+    let container = document.getElementById('container')
     let input = document.getElementById('input').value
-    array.push(input)
-    console.log(array)
-    let itemsContainer = document.getElementById('itemsContainer')
+    let error = document.getElementById('error')
+    if (input.length == 0) {
+        error.innerHTML = 'please fill the below field!!!'
+        container.classList.remove('d-none')
+        container.classList.add('error')
+        setTimeout(() => {
+            container.classList.add('d-none')
+            container.classList.remove('error')
 
+        }, 3000)
+    }
+    else {
 
+        container.classList.remove('d-none')
+        container.classList.add('alert')
+        setTimeout(() => {
+            container.classList.add('d-none')
+            container.classList.remove('alert')
 
-
-
-
-
-    let todoItems = document.createElement('div')
-
-    let checkbox = document.createElement('input')
-    checkbox.type = 'checkbox'
-
-
-    let para = document.createElement('p')
-    para.innerHTML = input
-    let button = document.createElement('button')
-    button.innerHTML = 'Delete'
-    button.classList.add('btn1')
-    todoItems.classList.add('todo-flex')
-    checkbox.classList.add('box')
-    todoItems.appendChild(checkbox)
-    todoItems.appendChild(para)
-    todoItems.appendChild(button)
-    itemsContainer.appendChild(todoItems)
-    document.getElementById('input').value = ''
-    // itemsContainer.addEventListener('click', () => {
-    //     itemsContainer.remove();
-    // });
-    let removeDiv = document.getElementById('itemsContainer');
-
-    button.addEventListener('click', () => {
-        //* to avoid error, you can check with condition statement OR try..catch
-        if (removeDiv) {
-            removeDiv.remove();
-        }
-    });
-
+        }, 3000)
+    }
 
 }
